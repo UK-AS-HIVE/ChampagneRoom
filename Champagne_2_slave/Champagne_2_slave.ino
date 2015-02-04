@@ -19,13 +19,13 @@ void setup() {
   pinMode(steppin, OUTPUT);
   pinMode(mainLight, OUTPUT);
   pinMode(mainSwitch, INPUT);
-  pinMode(A1, OUTPUT);
+  pinMode(comm, INPUT);
   Serial.begin(9600);
   closeMeNoSafe();
 }
 
 void loop() {
-    if(digitalRead(A1) == 1){
+    if(digitalRead(comm) == 1){
       trial();
       trialIndex++;
     }

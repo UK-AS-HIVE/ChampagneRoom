@@ -20,7 +20,7 @@ void setup() {
   pinMode(steppin, OUTPUT);
   pinMode(mainLight, OUTPUT);
   pinMode(mainSwitch, INPUT);
-  pinMode(A1, OUTPUT);
+  pinMode(comm, OUTPUT);
   Serial.begin(9600);
   closeMeNoSafe();
 }
@@ -41,12 +41,14 @@ void loop() {
     //delay(vi120[trialIndex] * 1000);
     if(currentMillis - prevMillis > vi120[trialIndex] * 1000){
       prevMillis = currentMillis + 16000;
-      digitalWrite(A1, HIGH);
+      Serial.write("sending\n");
+      digitalWrite(comm, HIGH);
       delay(2);
-      digitalWrite(A1, LOW);
+      digitalWrite(comm, LOW);
       trial();
       trialIndex++;
     }
+  
   }
 }
 
